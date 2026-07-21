@@ -1,0 +1,6 @@
+pre-push:
+  scripts:
+    lint:
+      runner: golangci-lint run
+    test:
+      runner: go test ./...
