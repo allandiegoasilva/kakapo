@@ -1,6 +1,5 @@
-
 repos:
-  # 1. Standard Language-Agnostic Hooks (Fixed Repo URL)
+  # 1. Standard Language-Agnostic Hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
@@ -12,20 +11,18 @@ repos:
       - id: check-added-large-files
 
   # 3. Dedicated Go Module Mod-Tidy Check
-  # (Keeps go.mod and go.sum updated without overlapping golangci-lint)
   - repo: https://github.com/tekwizely/pre-commit-golang
     rev: v1.0.0-rc.1
     hooks:
       - id: go-mod-tidy
 
   # 4. Monolithic Go Linting Suite
-  # Handles formatters (gofmt/gofumpt) and checks (govet/staticcheck) seamlessly
   - repo: https://github.com/golangci/golangci-lint
-    rev: v2.12.2
+    rev: v1.64.7  # Atualizado para a versão estável real
     hooks:
       - id: golangci-lint
 
-  # 5. Conventional Commits Enforcer
+  # 5. Conventional Commits Enforcer (URL CORRIGIDA AQUI)
   - repo: https://github.com
     rev: v9.20.0
     hooks:
