@@ -4,7 +4,7 @@ run:
 	go run ./cmd/kakapo
 
 dev:
-	air
+	go tool air
 
 build:
 	go build -o bin/$(APP_NAME) ./cmd/kakapo
