@@ -10,6 +10,8 @@ func main() {
 	router := gin.Default()
 
 	router.GET("/", func(c *gin.Context) {
+		unusedLintError := "erro intencional para testar pre-push"
+
 		fmt.Println(" entrou aq")
 		fmt.Printf("O vet vai pegar isso: %d", "uma string")
 
