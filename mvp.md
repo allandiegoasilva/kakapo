@@ -1,0 +1,11 @@
+- [ ] Login
+- [ ] Cadastro
+- [ ] JWT
+- [ ] Refresh Token
+- [ ] Verify Email
+- [ ] Forgot/Reset Password
+- [ ] Sessions
+- [ ] Organizations
+- [ ] RBAC
+- [ ] Login suspeito
+- [ ] Welcome Email

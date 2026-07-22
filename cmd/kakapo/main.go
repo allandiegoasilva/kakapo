@@ -1,24 +1,22 @@
 package main
 
 import (
-	"fmt"
+	"log"
+
+	"kakapo/internal/router"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	router := gin.Default()
+	r := gin.Default()
 
-	router.GET("/", func(c *gin.Context) {
-		unusedLintError := "erro intencional para testar pre-push"
+	r.Use(gin.Logger())
 
-		fmt.Println(" entrou aq")
-		fmt.Printf("O vet vai pegar isso: %d", "uma string")
+	v1 := r.Group("/v1")
+	router.SetupRouter(v1)
 
-		c.JSON(200, gin.H{
-			"message": "Hello, World!",
-		})
-	})
-
-	router.Run(":8080")
+	if err := r.Run(":8080"); err != nil {
+		log.Fatal(err)
+	}
 }
