@@ -1,4 +1,4 @@
-package entity
+package project
 
 import (
 	shared "kakapo/internal/shared/event"
