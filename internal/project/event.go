@@ -1,8 +1,6 @@
 package project
 
-import (
-	"kakapo/internal/shared/event"
-)
+import "kakapo/internal/shared"
 
 const (
 	CreatedEventName = "project.created"
@@ -10,22 +8,22 @@ const (
 )
 
 type (
-	CreatedEvent = event.DomainEvent[Project]
-	UpdatedEvent = event.DomainEvent[Project]
+	CreatedEvent = shared.DomainEvent[Project]
+	UpdatedEvent = shared.DomainEvent[Project]
 )
 
 func NewCreatedEvent(p *Project) *CreatedEvent {
-	return event.NewDomainEvent(event.NewDomainInput[Project]{
+	return shared.NewDomainEvent(shared.NewDomainInput[Project]{
 		EventName:   CreatedEventName,
-		AggregateID: p.ID,
+		AggregateID: p.Id,
 		Payload:     *p,
 	})
 }
 
 func NewUpdatedEvent(p *Project) *UpdatedEvent {
-	return event.NewDomainEvent(event.NewDomainInput[Project]{
+	return shared.NewDomainEvent(shared.NewDomainInput[Project]{
 		EventName:   UpdatedEventName,
-		AggregateID: p.ID,
+		AggregateID: p.Id,
 		Payload:     *p,
 	})
 }

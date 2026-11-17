@@ -1,0 +1,11 @@
+| Módulo | O que concentra |
+|---|---|
+| `workspaces` | Workspaces, membros administrativos e convites |
+| `projects` | Projetos, aplicações e configurações |
+| `identities` | Usuários finais, perfil, status e contas vinculadas |
+| `authentication` | Login, credenciais, provedores externos e recuperação |
+| `sessions` | Sessões, renovação, expiração e revogação |
+| `organizations` | Organizações, memberships e convites |
+| `authorization` | Papéis, permissões e atribuições |
+| `oauth` | Endpoints OAuth 2.0 e OpenID Connect |
+| `audit` | Eventos de segurança e ações administrativas |

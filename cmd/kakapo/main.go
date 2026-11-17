@@ -1,22 +1,11 @@
 package main
 
 import (
-	"log"
-
-	"kakapo/internal/router"
-
-	"github.com/gin-gonic/gin"
+	"github.com/labstack/echo/v5"
 )
 
 func main() {
-	r := gin.Default()
+	e := echo.New()
 
-	r.Use(gin.Logger())
-
-	v1 := r.Group("/v1")
-	router.SetupRouter(v1)
-
-	if err := r.Run(":8080"); err != nil {
-		log.Fatal(err)
-	}
+	e.Start(":8000")
 }

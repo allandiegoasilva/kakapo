@@ -1,4 +1,4 @@
-package reply
+package shared
 
 type Pagination struct {
 	Page     int `json:"page"`

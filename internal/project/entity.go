@@ -1,19 +1,20 @@
 package project
 
 import (
-	shared "kakapo/internal/shared/event"
+	"kakapo/internal/shared"
+	"kakapo/internal/shared/vo"
 	"time"
 
 	"github.com/google/uuid"
 )
 
 type Project struct {
-	ID          string `json:"id"`
-	Name        string `json:"name"`
-	Description string `json:"description"`
-
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at"`
+	Id          string    `json:"id"`
+	Name        string    `json:"name"`
+	Description string    `json:"description"`
+	Slug        string    `json:"slug"`
+	CreatedAt   time.Time `json:"created_at"`
+	UpdatedAt   time.Time `json:"updated_at"`
 
 	events []shared.DomainEvent[any]
 }
@@ -23,16 +24,28 @@ type ProjectCreateInput struct {
 	Description string
 }
 
-func NewProject(in ProjectCreateInput) *Project {
+func NewProject(i ProjectCreateInput) (*Project, error) {
 	now := time.Now()
+
+	slug, err := vo.NewSlugVO(i.Name)
+
+	if err != nil {
+		return nil, err
+	}
+
+	description := vo.NewCleanStringVO(i.Description, vo.CleanStringOptions{
+		MaxLength: 350,
+	}).Value()
+
 	return &Project{
-		ID:          uuid.NewString(),
-		Name:        in.Name,
-		Description: in.Description,
+		Id:          uuid.NewString(),
+		Name:        vo.NewCleanStringVO(i.Name).Value(),
+		Description: description,
+		Slug:        slug.Value(),
 		CreatedAt:   now,
 		UpdatedAt:   now,
 		events:      []shared.DomainEvent[any]{},
-	}
+	}, nil
 }
 
 func (p *Project) Raise(e shared.DomainEvent[any]) {
